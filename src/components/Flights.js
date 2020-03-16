@@ -6,13 +6,13 @@ import FlightCard from './FlightCard';
 class Flights extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.location.state.flights)
         this.state = {
             flights: this.props.location.state.flights,
             copyForSearch: this.props.location.state.flights
         }
         this.onChangeSlider = this.onChangeSlider.bind(this);
         this.handleDuration = this.handleDuration.bind(this);
+        this.handleAirLine = this.handleAirLine.bind(this);
     }
 
     onChangeSlider(value) {
@@ -47,6 +47,25 @@ class Flights extends Component {
         })
     }
 
+    handleAirLine(e){
+        const airline = e.target.value;
+        if(airline){
+            let filteredFlight = this.state.copyForSearch.filter((flight)=>{
+                if(flight.Airline === airline)
+                return flight
+            })
+            this.setState({
+                flights: filteredFlight
+            })
+        }
+        else{
+            let filteredFlight = this.state.copyForSearch;
+            this.setState({
+                flights: filteredFlight
+            })
+        }
+    }
+
     getOptionForTime(){
         return(
             <React.Fragment>
@@ -78,11 +97,11 @@ class Flights extends Component {
                         </select>
                     </div>
                     <div className="row">
-                        <select className="browser-default">
+                        <select className="browser-default" onChange={this.handleAirLine}>
                             <option value="">Choose Airline</option>
-                            <option value="airIndia">Air India</option>
-                            <option value="indigo">Indigo</option>
-                            <option value="jetAirways">Jet Airways</option>
+                            <option value="Air India">Air India</option>
+                            <option value="Indigo">Indigo</option>
+                            <option value="Jet Airways">Jet Airways</option>
                         </select>
                     </div>
                     <div className="row">
