@@ -41,11 +41,11 @@ class FlightCard extends Component {
     render() {
         const { flights } = this.props;
         return (
-            <React.Fragment>
+            <div className="flight-row">
                 <div className="row">
                     {this.getFlightCard(flights)}
                 </div>
-            </React.Fragment>
+            </div>
         );
     }
 }

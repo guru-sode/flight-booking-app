@@ -116,7 +116,7 @@ class Form extends Component {
                         </div>
                         <div className="row">
                             <div className="col s6 offset-s3">
-                                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <button className="btn waves-effect waves-light" type="submit" name="action">Search Flights
                             <i className="material-icons right">send</i>
                                 </button>
                             </div>

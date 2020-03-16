@@ -71,7 +71,7 @@ class Flights extends Component {
                         </select>
                     </div>
                 </div>
-                <div className="col s10">
+                <div className="col s10 flight-cards">
                     <FlightCard flights={this.state.flights} />
                 </div>
             </div>

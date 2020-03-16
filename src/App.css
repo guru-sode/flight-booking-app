@@ -28,8 +28,15 @@
   color: #61dafb;
 }
 
+.flight-row {
+  position: relative;
+  max-height: 70vh;
+  overflow: scroll;
+}
+
 .page-footer {
-  bottom: 0%;
+  position: absolute;
+  bottom: 0;
   width: 100%;
 }
 
