@@ -6,7 +6,7 @@ function Footer() {
             <div className="container">
                 <div className="row">
                     <div className="col s4">
-                        <a className="grey-text text-lighten-3" href="#!">GitHub</a>
+                        <a className="grey-text text-lighten-3" href="https://github.com/guru-sode/flight-booking-app">GitHub</a>
                     </div>
                     <div className="col s4">
                         <a className="grey-text text-lighten-3" href="#!">Netlify</a>
