@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import flights from '../data/flights';
 
 class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            noError: false
+            noError: false,
+            flights: flights.Flights
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,8 +25,15 @@ class Form extends Component {
         event.preventDefault();
         const err = this.validate();
         if(!err){
+            let filteredFlights = this.state.flights.filter((flight)=>{
+                if(flight.From.toLowerCase() === this.state.source.toLowerCase() && 
+                    flight.To.toLowerCase() === this.state.destination.toLowerCase() && 
+                    parseInt(flight['Seats Available']) >= parseInt(this.state.passengers))
+                return flight
+            })
             this.setState({
-                noError: true
+                noError: true,
+                flights: filteredFlights
             })
         }
     }
@@ -55,7 +64,7 @@ class Form extends Component {
             })
             err=true;
         }
-        if (parseInt(this.state.passengers) < 0 || !this.state.passengers) {
+        if (parseInt(this.state.passengers) <= 0 || !this.state.passengers) {
             this.setState({
                 errPassengers: 'Number of passengers should be at least 1',
             })

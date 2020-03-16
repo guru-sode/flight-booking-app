@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import flights from '../data/flights';
 import FlightCard from './FlightCard';
 
 class Flights extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props.location.state.flights)
         this.state = {
-            flights: flights.Flights
+            flights: this.props.location.state.flights
         }
         this.onChangeSlider = this.onChangeSlider.bind(this);
     }
