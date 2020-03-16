@@ -10,12 +10,14 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <React.Fragment>
         <div className="App">
           <Route  path="/" component={Header} />
           <Route exact path="/" component={Form} />
           <Route exact path="/flights" component={Flights} />
           <Route  path="/" component={Footer} />
         </div>
+        </React.Fragment>
       </Switch>
     </BrowserRouter>
   );
