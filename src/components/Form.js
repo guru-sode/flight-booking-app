@@ -1,11 +1,31 @@
 import React, { Component } from 'react';
 
 class Form extends Component {
-    state = {}
+    constructor(props){
+        super(props);
+        this.state={}
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event){
+        const id = event.target.id;
+        console.log(id, event.target.value)
+        this.setState({
+            [id]: event.target.value
+        })
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+    }
+
+
     render() {
         return (
+            <div className="container">
             <div className="row">
-                <form className="col s12">
+                <form className="col s12" onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     <div className="row">
                         <div className="input-field col s6">
                             <input className="validate" placeholder="Enter first name" id="first_name" type="text"></input>
@@ -45,6 +65,7 @@ class Form extends Component {
                         </div>
                     </div>
                 </form>
+            </div>
             </div>
         );
     }
