@@ -5,7 +5,7 @@
             "To": "Delhi",
             "Departure": "17:00",
             "Arrival": "19:40",
-            "Duration": "2 Hours 40 mins",
+            "Duration": "2.6 Hours",
             "Airline": "Jet Airways",
             "Seats Available": "1",
             "Price": "6900"
@@ -15,7 +15,7 @@
             "To": "Bangalore",
             "Departure": "21:40",
             "Arrival": "00:10",
-            "Duration": "2 Hours 30 mins",
+            "Duration": "2.5 Hours",
             "Airline": "Air India",
             "Seats Available": "1",
             "Price": "7500"
@@ -25,7 +25,7 @@
             "To": "Kolkata",
             "Departure": "07:00",
             "Arrival": "09:30",
-            "Duration": "2 Hours 30 mins",
+            "Duration": "2.5 Hours",
             "Airline": "Jet Airways",
             "Seats Available": "2",
             "Price": "4000"
@@ -35,7 +35,7 @@
             "To": "Chennai",
             "Departure": "12:30",
             "Arrival": "15:20",
-            "Duration": "2 Hours 50 Mins",
+            "Duration": "2.8 Hours",
             "Airline": "Air India",
             "Seats Available": "3",
             "Price": "9000"
@@ -55,7 +55,7 @@
             "To": "Bangalore",
             "Departure": "21:30",
             "Arrival": "00:10",
-            "Duration": "2 Hours 40 mins",
+            "Duration": "2.6 Hours",
             "Airline": "Jet Airways",
             "Seats Available": "3",
             "Price": "6300"
@@ -125,7 +125,7 @@
             "To": "Bangalore",
             "Departure": "05:50",
             "Arrival": "08:00",
-            "Duration": "2 Hours 10 mins",
+            "Duration": "2.1 Hours",
             "Airline": "Indigo",
             "Seats Available": "21",
             "Price": "5700"
@@ -135,7 +135,7 @@
             "To": "Delhi",
             "Departure": "16:50",
             "Arrival": "19:00",
-            "Duration": "2 Hours 10 mins",
+            "Duration": "2.1 Hours",
             "Airline": "Air India",
             "Seats Available": "24",
             "Price": "5750"
@@ -175,7 +175,7 @@
             "To": "Chennai",
             "Departure": "03:00",
             "Arrival": "06:05",
-            "Duration": "3 Hours 5 mins",
+            "Duration": "3.08 Hours",
             "Airline": "Jet Airways",
             "Seats Available": "29",
             "Price": "7500"
@@ -185,7 +185,7 @@
             "To": "Bangalore",
             "Departure": "02:30",
             "Arrival": "04:50",
-            "Duration": "2 Hours 20 mins",
+            "Duration": "2.3 Hours",
             "Airline": "Air India",
             "Seats Available": "36",
             "Price": "4500"
@@ -195,7 +195,7 @@
             "To": "Delhi",
             "Departure": "17:00",
             "Arrival": "19:50",
-            "Duration": "2 Hours 50 mins",
+            "Duration": "2.8 Hours",
             "Airline": "Indigo",
             "Seats Available": "56",
             "Price": "4800"

@@ -8,15 +8,42 @@ class Flights extends Component {
         super(props);
         console.log(this.props.location.state.flights)
         this.state = {
-            flights: this.props.location.state.flights
+            flights: this.props.location.state.flights,
+            copyForSearch: this.props.location.state.flights
         }
         this.onChangeSlider = this.onChangeSlider.bind(this);
+        this.handleDuration = this.handleDuration.bind(this);
     }
 
     onChangeSlider(value) {
         this.setState({
             lowerBoundPrice: value[0],
             upperBoundPrice: value[1]
+        })
+    }
+
+    handleDuration(e){
+        let filteredFlight = this.state.flights;
+        if(e.target.value === 'lesser'){
+            filteredFlight=this.state.copyForSearch.filter((flight)=>{
+                if(parseFloat(flight.Duration) < 2)
+                return flight
+            })
+        }
+        if(e.target.value === 'between'){
+            filteredFlight=this.state.copyForSearch.filter((flight)=>{
+                if(parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3)
+                return flight
+            })
+        }
+        if(e.target.value === 'greater'){
+            filteredFlight=this.state.copyForSearch.filter((flight)=>{
+                if(parseFloat(flight.Duration) > 2)
+                return flight
+            })
+        }
+        this.setState({
+            flights: filteredFlight
         })
     }
 
@@ -43,7 +70,7 @@ class Flights extends Component {
                         <Range defaultValue={[2000, 10000]} onChange={this.onChangeSlider} allowCross={false} min={2000} max={10000} />
                     </div>
                     <div className="row">
-                        <select className="browser-default">
+                        <select className="browser-default" onChange={this.handleDuration}>
                             <option value="">Duration</option>
                             <option value="lesser">{'< 2hrs'}</option>
                             <option value="between">2hrs-3hrs</option>
