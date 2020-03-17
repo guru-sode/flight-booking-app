@@ -9,7 +9,7 @@ function Footer() {
                         <a className="grey-text text-lighten-3" href="https://github.com/guru-sode/flight-booking-app" target="_blank">GitHub</a>
                     </div>
                     <div className="col s4">
-                        <a className="grey-text text-lighten-3" href="#!" target="_blank">Netlify</a>
+                        <a className="grey-text text-lighten-3" href="https://app.netlify.com/teams/guru-sode/sites" target="_blank">Netlify</a>
                     </div>
                     <div className="col s4">
                         <a className="grey-text text-lighten-3" href="https://www.linkedin.com/in/gurukiran-s-d-8a072282/" target="_blank">LinkedIn</a>
