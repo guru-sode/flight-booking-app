@@ -36,6 +36,7 @@ class Flights extends Component {
         this.handleAirLine = this.handleAirLine.bind(this);
         this.handleDeparture = this.handleDeparture.bind(this);
         this.handleArrival = this.handleArrival.bind(this);
+        // this.filterFlights = this.filterFlights.bind(this);
     }
 
     onChangeSlider(value) {
@@ -55,16 +56,55 @@ class Flights extends Component {
     }
 
     // filterFlights() {
-    //     const lowerBoundPrice = this.state.lowerBoundPrice;
-    //     const upperBoundPrice = this.state.upperBoundPrice;
-    //     const upperArrival = this.state.upperArrival;
-    //     const lowerArrival = this.state.lowerArrival;
-    //     const upperDeparture = this.state.upperDeparture;
-    //     const lowerDepartue = this.state.lowerDepartue;
+    //     const lowerBoundPrice = this.state.lowerBoundPrice ? this.state.lowerBoundPrice: 0;
+    //     const upperBoundPrice = this.state.upperBoundPrice ? this.state.upperBoundPrice: 10000;
+    //     const upperArrival = this.state.upperArrival ? this.state.upperArrival: moment(parseFloat('24:00').valueOf());
+    //     const lowerArrival = this.state.lowerArrival ? this.state.lowerArrival: moment(parseFloat('00:00').valueOf());
+    //     const upperDeparture = this.state.upperDeparture ? this.state.upperDeparture: moment(parseFloat('24:00').valueOf());
+    //     const lowerDepartue = this.state.lowerDepartue ? this.state.lowerDepartue: moment(parseFloat('00:00').valueOf());
     //     const airline = this.state.preferredAirline;
     //     const duration = this.state.preferredDuration;
     //     let filterFlights = this.state.copyForSearch.filter((flight)=>{
-    //         if()
+    //         const departure = moment(parseFloat(flight.Departure)).valueOf();
+    //         const arrival = moment(parseFloat(flight.Arrival)).valueOf();
+    //         const testCondition = departure >= lowerDepartue && departure <= upperDeparture &&
+    //         arrival >= lowerArrival && arrival <= upperArrival &&
+    //         parseFloat(flight.Price) >= parseFloat(lowerBoundPrice) && parseFloat(flight.Price) <= parseFloat(upperBoundPrice);
+    //         if(airline && !duration){
+    //             if(testCondition && flight.Airline === airline)
+    //             return flight
+    //         }
+    //         if(duration && !airline){
+    //             if(duration == 'lesser'){
+    //                 if(parseFloat(flight.Duration) < 2 && testCondition)
+    //                 return flight;
+    //             }
+    //             else if(duration == 'between'){
+    //                 if(testCondition && parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3)
+    //                 return flight;
+    //             }
+    //             else if(duration == 'greater'){
+    //                 if(parseFloat(flight.Duration) > 3 && testCondition)
+    //                 return flight;
+    //             }
+    //         }
+    //         if(airline && duration){
+    //             if(duration == 'lesser'){
+    //                 if(parseFloat(flight.Duration) < 2 && testCondition && flight.Airline === airline)
+    //                 return flight;
+    //             }
+    //             else if(duration == 'between'){
+    //                 if(testCondition && parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3 && flight.Airline === airline)
+    //                 return flight;
+    //             }
+    //             else if(duration == 'greater'){
+    //                 if(parseFloat(flight.Duration) > 3 && testCondition && flight.Airline === airline)
+    //                 return flight;
+    //             }
+    //         }
+    //     })
+    //     this.setState({
+    //         flights: filterFlights
     //     })
     // }
 
@@ -146,7 +186,6 @@ class Flights extends Component {
                 if (departure >= lowerBound && departure <= upperBound)
                     return flight
             })
-            console.log(filteredFlight)
             this.setState({
                 flights: filteredFlight
             })
@@ -169,8 +208,8 @@ class Flights extends Component {
                 upperArrival: upperBound
             })
             let filteredFlight = this.state.copyForSearch.filter((flight) => {
-                const departure = moment(parseFloat(flight.Arrival)).valueOf();
-                if (departure >= lowerBound && departure <= upperBound)
+                const arrival = moment(parseFloat(flight.Arrival)).valueOf();
+                if (arrival >= lowerBound && arrival <= upperBound)
                     return flight
             })
             console.log(filteredFlight)
