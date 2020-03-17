@@ -19,27 +19,49 @@ class Flights extends Component {
     }
 
     onChangeSlider(value) {
+        const lowerBoundPrice = value[0];
+        const upperBoundPrice = value[1];
         this.setState({
-            lowerBoundPrice: value[0],
-            upperBoundPrice: value[1]
+            lowerBoundPrice,
+            upperBoundPrice
         })
+        let filteredFlight = this.state.copyForSearch.filter((flight)=>{
+            if(parseFloat(flight.Price) >= parseFloat(lowerBoundPrice) && parseFloat(flight.Price) <= parseFloat(upperBoundPrice))
+            return flight
+        })
+        this.setState({
+            flights: filteredFlight
+        })
+    }
+
+    filterFlights(){
+
     }
 
     handleDuration(e){
         let filteredFlight = this.state.flights;
         if(e.target.value === 'lesser'){
+            this.setState({
+                preferredDuration: 'lesser'
+            });
             filteredFlight=this.state.copyForSearch.filter((flight)=>{
                 if(parseFloat(flight.Duration) < 2)
                 return flight
             })
         }
         if(e.target.value === 'between'){
+            this.setState({
+                preferredDuration: 'between'
+            })
             filteredFlight=this.state.copyForSearch.filter((flight)=>{
                 if(parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3)
                 return flight
             })
         }
         if(e.target.value === 'greater'){
+            this.setState({
+                preferredDuration: 'greater'
+            })
             filteredFlight=this.state.copyForSearch.filter((flight)=>{
                 if(parseFloat(flight.Duration) > 2)
                 return flight
@@ -53,6 +75,9 @@ class Flights extends Component {
     handleAirLine(e){
         const airline = e.target.value;
         if(airline){
+            this.setState({
+                preferredAirline: airline
+            })
             let filteredFlight = this.state.copyForSearch.filter((flight)=>{
                 if(flight.Airline === airline)
                 return flight
@@ -74,6 +99,10 @@ class Flights extends Component {
         if(time[0] && time[1]){
             const lowerBound = moment(parseFloat(time[0])).valueOf();
             const upperBound = moment(parseFloat(time[1])).valueOf();
+            this.setState({
+                lowerDepartue: lowerBound,
+                upperDeparture: upperBound
+            })
             let filteredFlight = this.state.copyForSearch.filter((flight)=>{
                 const departure = moment(parseFloat(flight.Departure)).valueOf();
                 if(departure >= lowerBound && departure <= upperBound)
@@ -97,6 +126,10 @@ class Flights extends Component {
         if(time[0] && time[1]){
             const lowerBound = moment(parseFloat(time[0])).valueOf();
             const upperBound = moment(parseFloat(time[1])).valueOf();
+            this.setState({
+                lowerArrival: lowerBound,
+                upperArrival: upperBound
+            })
             let filteredFlight = this.state.copyForSearch.filter((flight)=>{
                 const departure = moment(parseFloat(flight.Arrival)).valueOf();
                 if(departure >= lowerBound && departure <= upperBound)
@@ -134,7 +167,7 @@ class Flights extends Component {
         return (
             <div className="row">
                 <div className="col s2">
-                    <div className="row">
+                    <div className="row filter-menu">
                         <Range defaultValue={[2000, 10000]} onChange={this.onChangeSlider} allowCross={false} min={2000} max={10000} />
                     </div>
                     <div className="row">
