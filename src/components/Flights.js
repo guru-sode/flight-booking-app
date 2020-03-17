@@ -64,6 +64,7 @@ class Flights extends Component {
         const lowerDeparture = this.state.lowerDeparture ? this.state.lowerDepartue: moment(parseFloat('00:00').valueOf());
         const airline = this.state.preferredAirline;
         const duration = this.state.preferredDuration;
+        console.log(airline)
         let filterFlights = this.state.copyForSearch.filter((flight)=>{
             const departure = moment(parseFloat(flight.Departure)).valueOf();
             const arrival = moment(parseFloat(flight.Arrival)).valueOf();
@@ -135,7 +136,9 @@ class Flights extends Component {
                 preferredDuration: null
             })
         }
-        this.filterFlights();
+        setTimeout(()=>{
+            this.filterFlights();
+        },1000)
     }
 
     handleAirLine(e) {
@@ -150,7 +153,9 @@ class Flights extends Component {
                 preferredAirline: null
             })
         }
-        this.filterFlights();
+        setTimeout(()=>{
+            this.filterFlights();
+        },1000)
     }
 
     handleDeparture(e) {
@@ -169,7 +174,9 @@ class Flights extends Component {
                 upperDeparture: null
             })
         }
-        this.filterFlights();
+        setTimeout(()=>{
+            this.filterFlights();
+        },1000)
     }
 
     handleArrival(e) {
@@ -188,7 +195,9 @@ class Flights extends Component {
                 upperArrival: null
             })
         }
-        this.filterFlights();
+        setTimeout(()=>{
+            this.filterFlights();
+        },1000)
     }
 
     getOptionForTime() {
