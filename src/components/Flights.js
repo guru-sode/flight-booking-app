@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import FlightCard from './FlightCard';
 import moment from 'moment';
@@ -55,42 +54,60 @@ class Flights extends Component {
         })
     }
 
-    filterFlights() {
-
-    }
+    // filterFlights() {
+    //     const lowerBoundPrice = this.state.lowerBoundPrice;
+    //     const upperBoundPrice = this.state.upperBoundPrice;
+    //     const upperArrival = this.state.upperArrival;
+    //     const lowerArrival = this.state.lowerArrival;
+    //     const upperDeparture = this.state.upperDeparture;
+    //     const lowerDepartue = this.state.lowerDepartue;
+    //     const airline = this.state.preferredAirline;
+    //     const duration = this.state.preferredDuration;
+    //     let filterFlights = this.state.copyForSearch.filter((flight)=>{
+    //         if()
+    //     })
+    // }
 
     handleDuration(e) {
-        let filteredFlight = this.state.flights;
-        if (e.target.value === 'lesser') {
+        if(e.target.value){
+            let filteredFlight = this.state.copyForSearch;
+            if (e.target.value === 'lesser') {
+                this.setState({
+                    preferredDuration: 'lesser'
+                });
+                filteredFlight = this.state.copyForSearch.filter((flight) => {
+                    if (parseFloat(flight.Duration) < 2)
+                        return flight
+                })
+            }
+            if (e.target.value === 'between') {
+                this.setState({
+                    preferredDuration: 'between'
+                })
+                filteredFlight = this.state.copyForSearch.filter((flight) => {
+                    if (parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3)
+                        return flight
+                })
+            }
+            if (e.target.value === 'greater') {
+                this.setState({
+                    preferredDuration: 'greater'
+                })
+                filteredFlight = this.state.copyForSearch.filter((flight) => {
+                    if (parseFloat(flight.Duration) > 3)
+                        return flight
+                })
+            }
             this.setState({
-                preferredDuration: 'lesser'
-            });
-            filteredFlight = this.state.copyForSearch.filter((flight) => {
-                if (parseFloat(flight.Duration) < 2)
-                    return flight
+                flights: filteredFlight
             })
         }
-        if (e.target.value === 'between') {
+        else{
+            let filteredFlight = this.state.copyForSearch;
             this.setState({
-                preferredDuration: 'between'
-            })
-            filteredFlight = this.state.copyForSearch.filter((flight) => {
-                if (parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3)
-                    return flight
+                flights: filteredFlight
             })
         }
-        if (e.target.value === 'greater') {
-            this.setState({
-                preferredDuration: 'greater'
-            })
-            filteredFlight = this.state.copyForSearch.filter((flight) => {
-                if (parseFloat(flight.Duration) > 2)
-                    return flight
-            })
-        }
-        this.setState({
-            flights: filteredFlight
-        })
     }
 
     handleAirLine(e) {
@@ -189,7 +206,7 @@ class Flights extends Component {
             <div className="row">
                 <div className="col s2">
                     <div className="row filter-menu">
-                        <div>
+                        <div style={{padding: '25px'}}>
                             <p>Select price range</p>
                             <Range min={2000} max={10000} defaultValue={[2000, 10000]} onChange={this.onChangeSlider} tipFormatter={value => `${value}`} handle={handle} />
                         </div>
@@ -199,7 +216,7 @@ class Flights extends Component {
                             <option value="">Duration</option>
                             <option value="lesser">{'< 2hrs'}</option>
                             <option value="between">2hrs-3hrs</option>
-                            <option value="greater">> 2hrs</option>
+                            <option value="greater">> 3hrs</option>
                         </select>
                     </div>
                     <div className="row">
