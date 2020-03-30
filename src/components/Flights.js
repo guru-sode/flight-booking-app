@@ -31,15 +31,9 @@ class Flights extends Component {
             flights: this.props.location.state.flights,
             copyForSearch: this.props.location.state.flights
         }
-        this.onChangeSlider = this.onChangeSlider.bind(this);
-        this.handleDuration = this.handleDuration.bind(this);
-        this.handleAirLine = this.handleAirLine.bind(this);
-        this.handleDeparture = this.handleDeparture.bind(this);
-        this.handleArrival = this.handleArrival.bind(this);
-        this.filterFlights = this.filterFlights.bind(this);
     }
 
-    onChangeSlider(value) {
+    onChangeSlider = (value) => {
         const lowerBoundPrice = value[0];
         const upperBoundPrice = value[1];
         this.setState({
@@ -112,7 +106,7 @@ class Flights extends Component {
         })
     }
 
-    handleDuration(e) {
+    handleDuration = (e) => {
         if(e.target.value){
             if (e.target.value === 'lesser') {
                 this.setState({
@@ -140,7 +134,7 @@ class Flights extends Component {
         },1000)
     }
 
-    handleAirLine(e) {
+    handleAirLine = (e) => {
         const airline = e.target.value;
         if (airline) {
             this.setState({
@@ -157,7 +151,7 @@ class Flights extends Component {
         },1000)
     }
 
-    handleDeparture(e) {
+    handleDeparture = (e) => {
         const time = e.target.value.split('-');
         console.log(time)
         if (time[0] && time[1]) {
@@ -179,7 +173,7 @@ class Flights extends Component {
         },1000)
     }
 
-    handleArrival(e) {
+    handleArrival = (e) => {
         const time = e.target.value.split('-');
         if (time[0] && time[1]) {
             const lowerBound = moment(parseFloat(time[0])).valueOf();
@@ -200,7 +194,7 @@ class Flights extends Component {
         },1000)
     }
 
-    getOptionForTime() {
+    getOptionForTime = () => {
         return (
             <React.Fragment>
                 <option value="00:00-2:59">12:00AM-2:59AM</option>
