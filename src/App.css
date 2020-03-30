@@ -39,9 +39,16 @@
 }
 
 .page-footer {
-  position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.user-form {
+  min-height: 500px;
+}
+
+.flights-container{
+  min-height: 500px;
 }
 
 @keyframes App-logo-spin {

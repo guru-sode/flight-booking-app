@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import flights from '../data/flights';
+import $ from 'jquery';
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.autocomplete');
+    // var instances = M.Autocomplete.init(elems, options);
+  });
 
 class Form extends Component {
     constructor(props) {
@@ -12,6 +18,16 @@ class Form extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.validate = this.validate.bind(this);
+    }
+
+    componentDidMount(){
+        $('input.autocomplete').autocomplete({
+            data: {
+              "Apple": null,
+              "Microsoft": null,
+              "Google": 'https://placehold.it/250x250'
+            },
+          });
     }
 
     handleChange(event) {
@@ -80,7 +96,7 @@ class Form extends Component {
             return <Redirect to={{pathname:"/flights", state: this.state}} />
         }
         return (
-            <div className="container">
+            <div className="container user-form">
                 <div className="row">
                     <form className="col s12" onSubmit={this.handleSubmit} onChange={this.handleChange}>
                         <div className="row">
@@ -97,13 +113,13 @@ class Form extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input className="validate" placeholder="Enter source" id="source" type="text"></input>
+                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text"></input>
                                 <label htmlFor="source">From</label>
                                 <span className="helper-text red-text">{this.state.errSource ? this.state.errSource : null}</span>
                             </div>
                             <div className="input-field col s6">
                                 <input className="validate" placeholder="Enter destination" id="destination" type="text"></input>
-                                <label htmlFor="destination">To</label>
+                                <label htmlFor="destination autocomplete">To</label>
                                 <span className="helper-text red-text">{this.state.errDestination ? this.state.errDestination : null}</span>
                             </div>
                         </div>
