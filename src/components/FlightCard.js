@@ -12,8 +12,8 @@ class FlightCard extends Component {
             flights.map((flight, index) => {
                 return cards.push(
                     <div className="col s12 m6 l3" key={index}>
-                        <div className="card small blue-grey darken-1">
-                            <div className="card-content white-text">
+                        <div className="card small blue-white darken-1">
+                            <div className="card-content black-text">
                                 <span className="card-title">{flight.Airline}
                                 <img src={window.location.origin + '/logos/' + flight.Airline + '.jpg'} alt={flight.Airline} width="25"
                                     height="20" className="right"></img>
@@ -25,8 +25,9 @@ class FlightCard extends Component {
                                 <p>{`Price: ${flight.Price}`}</p>
                                 <p>{`Seats Available: ${flight['Seats Available']}`}</p>
                             </div>
-                            <div className="card-action">
-                                <a href="https://www.goindigo.in/" target="_blank">Book Ticket</a>
+                            <div className="card-action blue-grey darken-4">
+                                <a href="https://www.goindigo.in/" target="_blank" className="center">Book Ticket<i className="material-icons right">flight</i>
+                                </a>
                             </div>
                         </div>
                     </div>
