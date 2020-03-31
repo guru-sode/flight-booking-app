@@ -68,34 +68,34 @@ class Flights extends Component {
                 if(testCondition)
                 return flight;
             }
-            else if(airline && !duration){
+            if(airline && !duration){
                 if(testCondition && flight.Airline === airline)
                 return flight
             }
-            else if(duration && !airline){
+            if(duration && !airline){
                 if(duration === 'lesser'){
                     if(parseFloat(flight.Duration) < 2 && testCondition)
                     return flight;
                 }
-                else if(duration === 'between'){
+                if(duration === 'between'){
                     if(testCondition && parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3)
                     return flight;
                 }
-                else if(duration === 'greater'){
+                if(duration === 'greater'){
                     if(parseFloat(flight.Duration) > 3 && testCondition)
                     return flight;
                 }
             }
-            else if(airline && duration){
+            if(airline && duration){
                 if(duration === 'lesser'){
                     if(parseFloat(flight.Duration) < 2 && testCondition && flight.Airline === airline)
                     return flight;
                 }
-                else if(duration === 'between'){
+                if(duration === 'between'){
                     if(testCondition && parseFloat(flight.Duration) >= 2 && parseFloat(flight.Duration) <= 3 && flight.Airline === airline)
                     return flight;
                 }
-                else if(duration === 'greater'){
+                if(duration === 'greater'){
                     if(parseFloat(flight.Duration) > 3 && testCondition && flight.Airline === airline)
                     return flight;
                 }
