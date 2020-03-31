@@ -8,13 +8,16 @@ class FlightCard extends Component {
 
     getFlightCard(flights) {
         let cards = [];
-        if(flights){
+        if (flights) {
             flights.map((flight, index) => {
                 return cards.push(
                     <div className="col s12 m6 l3" key={index}>
                         <div className="card small blue-grey darken-1">
                             <div className="card-content white-text">
-                                <span className="card-title">{flight.Airline}</span>
+                                <span className="card-title">{flight.Airline}
+                                    <img src={window.location.origin+'/logos/'+flight.Airline+'.jpg'} alt="Simply Easy Learning" width="30"
+                                        height="20" className="material-icons right"></img>
+                                </span>
                                 <p>{`${flight.From} to ${flight.To}`}</p>
                                 <p>{`Departure Time: ${flight.Departure}`}</p>
                                 <p>{`Arrival Time: ${flight.Arrival}`}</p>
@@ -30,7 +33,7 @@ class FlightCard extends Component {
                 );
             })
         }
-        else{
+        else {
             cards.push(
 
             )

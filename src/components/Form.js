@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import flights from '../data/flights';
 
-const places = ["Chennai","Delhi","Kolkata","Bangalore"];
-
-window.$( function() {
-    window.$( ".autocomplete" ).autocomplete({
-      source: places
-    });
-  } );
-
+const places = ["Chennai", "Delhi", "Kolkata", "Bangalore"];
 class Form extends Component {
     constructor(props) {
         super(props);
@@ -19,22 +12,28 @@ class Form extends Component {
         }
     }
 
+    componentDidMount = () => {
+        window.$("input.autocomplete").autocomplete({
+            source: places,
+        });
+    }
+
     handleChange = (event) => {
         const id = event.target.id;
         this.setState({
-            [id]: event.target.value
+            [id]: event.target.value,
         })
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
         const err = this.validate();
-        if(!err){
-            let filteredFlights = this.state.flights.filter((flight)=>{
-                if(flight.From.toLowerCase() === this.state.source.toLowerCase() && 
-                    flight.To.toLowerCase() === this.state.destination.toLowerCase() && 
+        if (!err) {
+            let filteredFlights = this.state.flights.filter((flight) => {
+                if (flight.From.toLowerCase() === this.state.source.toLowerCase() &&
+                    flight.To.toLowerCase() === this.state.destination.toLowerCase() &&
                     parseInt(flight['Seats Available']) >= parseInt(this.state.passengers))
-                return flight
+                    return flight
             })
             this.setState({
                 noError: true,
@@ -49,40 +48,41 @@ class Form extends Component {
             this.setState({
                 errFName: 'Enter valid first name',
             })
-            err=true;
+            err = true;
         }
         if (!this.state.last_name) {
             this.setState({
                 errLName: 'Enter valid last name',
             })
-            err=true;
+            err = true;
         }
         if (!this.state.source) {
             this.setState({
                 errSource: 'Enter valid source name',
             })
-            err=true;
+            err = true;
         }
         if (!this.state.destination) {
             this.setState({
                 errDestination: 'Enter valid destination name',
             })
-            err=true;
+            err = true;
         }
         if (parseInt(this.state.passengers) <= 0 || !this.state.passengers) {
             this.setState({
                 errPassengers: 'Number of passengers should be at least 1',
             })
-            err=true;
+            err = true;
         }
         return err;
     }
 
 
     render() {
+        console.log(this.state)
         const redirectToReferrer = this.state.noError;
         if (redirectToReferrer) {
-            return <Redirect to={{pathname:"/flights", state: this.state}} />
+            return <Redirect to={{ pathname: "/flights", state: this.state }} />
         }
         return (
             <div className="container user-form">
@@ -102,12 +102,12 @@ class Form extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text"></input>
+                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text" autoComplete="on"></input>
                                 <label htmlFor="source">From</label>
                                 <span className="helper-text red-text">{this.state.errSource ? this.state.errSource : null}</span>
                             </div>
                             <div className="input-field col s6">
-                                <input className="validate autocomplete" placeholder="Enter destination" id="destination" type="text"></input>
+                                <input className="validate autocomplete" placeholder="Enter destination" id="destination" type="text" autoComplete="on"></input>
                                 <label htmlFor="destination">To</label>
                                 <span className="helper-text red-text">{this.state.errDestination ? this.state.errDestination : null}</span>
                             </div>
