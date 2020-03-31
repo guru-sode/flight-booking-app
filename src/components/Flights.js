@@ -153,7 +153,6 @@ class Flights extends Component {
 
     handleDeparture = (e) => {
         const time = e.target.value.split('-');
-        console.log(time)
         if (time[0] && time[1]) {
             const lowerBound = moment(parseFloat(time[0])).valueOf();
             const upperBound = moment(parseFloat(time[1])).valueOf();

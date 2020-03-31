@@ -79,7 +79,6 @@ class Form extends Component {
 
 
     render() {
-        console.log(this.state)
         const redirectToReferrer = this.state.noError;
         if (redirectToReferrer) {
             return <Redirect to={{ pathname: "/flights", state: this.state }} />
