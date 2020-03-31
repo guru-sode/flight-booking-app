@@ -8,7 +8,7 @@ class FlightCard extends Component {
 
     getFlightCard(flights) {
         let cards = [];
-        if (flights) {
+        if (flights.length > 1) {
             flights.map((flight, index) => {
                 return cards.push(
                     <div className="col s12 m6 l3" key={index}>
@@ -35,7 +35,14 @@ class FlightCard extends Component {
         }
         else {
             cards.push(
-
+                <div className="col s12 m12 l12">
+                <div className="card small white">
+                    <div className="card-content black-text">
+                        <span className="card-title center">No Flight Available</span>
+                        <p>No flight available for selected source, destination or number of passengers</p>
+                    </div>
+                </div>
+            </div>
             )
         }
         return cards;
