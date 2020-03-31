@@ -87,7 +87,7 @@ class Form extends Component {
         return (
             <div className="container user-form">
                 <div className="row">
-                    <form className="col s12" onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                    <form className="col s12" onSubmit={this.handleSubmit} onChange={this.handleChange} onBlur={this.handleChange}>
                         <div className="row">
                             <div className="input-field col s6">
                                 <input className="validate" placeholder="Enter first name" id="first_name" type="text"></input>
@@ -102,12 +102,12 @@ class Form extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text" autoComplete="on" onBlur={this.handleChange}></input>
+                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text" autoComplete="on"></input>
                                 <label htmlFor="source">From</label>
                                 <span className="helper-text red-text">{this.state.errSource ? this.state.errSource : null}</span>
                             </div>
                             <div className="input-field col s6">
-                                <input className="validate autocomplete" placeholder="Enter destination" id="destination" type="text" autoComplete="on" onBlur={this.handleChange}></input>
+                                <input className="validate autocomplete" placeholder="Enter destination" id="destination" type="text" autoComplete="on"></input>
                                 <label htmlFor="destination">To</label>
                                 <span className="helper-text red-text">{this.state.errDestination ? this.state.errDestination : null}</span>
                             </div>
