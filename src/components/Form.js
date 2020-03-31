@@ -23,6 +23,12 @@ class Form extends Component {
         this.setState({
             [id]: event.target.value,
         })
+        const source = document.getElementById('source').value;
+        const destination = document.getElementById('destination').value;
+        this.setState({
+            source,
+            destination
+        })
     }
 
     handleSubmit = (event) => {

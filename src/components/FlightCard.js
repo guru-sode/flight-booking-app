@@ -15,8 +15,8 @@ class FlightCard extends Component {
                         <div className="card small blue-grey darken-1">
                             <div className="card-content white-text">
                                 <span className="card-title">{flight.Airline}
-                                    <img src={window.location.origin+'/logos/'+flight.Airline+'.jpg'} alt="Simply Easy Learning" width="30"
-                                        height="20" className="material-icons right"></img>
+                                <img src={window.location.origin + '/logos/' + flight.Airline + '.jpg'} alt={flight.Airline} width="25"
+                                    height="20" className="right"></img>
                                 </span>
                                 <p>{`${flight.From} to ${flight.To}`}</p>
                                 <p>{`Departure Time: ${flight.Departure}`}</p>
