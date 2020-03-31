@@ -23,12 +23,6 @@ class Form extends Component {
         this.setState({
             [id]: event.target.value,
         })
-        const source = document.getElementById('source').value;
-        const destination = document.getElementById('destination').value;
-        this.setState({
-            source,
-            destination
-        })
     }
 
     handleSubmit = (event) => {
@@ -108,12 +102,12 @@ class Form extends Component {
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text" autoComplete="on"></input>
+                                <input className="validate autocomplete" placeholder="Enter source" id="source" type="text" autoComplete="on" onBlur={this.handleChange}></input>
                                 <label htmlFor="source">From</label>
                                 <span className="helper-text red-text">{this.state.errSource ? this.state.errSource : null}</span>
                             </div>
                             <div className="input-field col s6">
-                                <input className="validate autocomplete" placeholder="Enter destination" id="destination" type="text" autoComplete="on"></input>
+                                <input className="validate autocomplete" placeholder="Enter destination" id="destination" type="text" autoComplete="on" onBlur={this.handleChange}></input>
                                 <label htmlFor="destination">To</label>
                                 <span className="helper-text red-text">{this.state.errDestination ? this.state.errDestination : null}</span>
                             </div>
