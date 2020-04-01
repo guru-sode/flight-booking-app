@@ -36,7 +36,7 @@ class FlightCard extends Component {
         }
         else {
             cards.push(
-                <div className="col s12 m12 l12">
+                <div className="col s12 m12 l12" key="no-flight">
                 <div className="card small white">
                     <div className="card-content black-text">
                         <span className="card-title center">No Flight Available</span>
